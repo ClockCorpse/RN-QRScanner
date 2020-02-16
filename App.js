@@ -14,6 +14,7 @@ import {
   View,
   Text,
   StatusBar,
+  ToastAndroid,
 } from 'react-native';
 
 import {
@@ -26,7 +27,7 @@ import {
 import { RNCamera } from 'react-native-camera';
 
 barcodeRecognized = ({ barcodes }) => {
-  barcodes.forEach(barcode => console.warn(barcode.data))
+  barcodes.forEach(barcode => ToastAndroid.show(barcode.data,ToastAndroid.SHORT))
 };
 
 export default function App() {
