@@ -15,6 +15,7 @@ import {
   Text,
   StatusBar,
   ToastAndroid,
+  Dimensions,
 } from 'react-native';
 
 import {
@@ -40,20 +41,50 @@ export default function App() {
          style={{
            flex: 1,
            width: '100%',
+           ...StyleSheet.absoluteFill,
          }}
          onGoogleVisionBarcodesDetected={this.barcodeRecognized}
        >
        </RNCamera>
+       <View style={styles.qrArea}></View>
+       <View style={{width: width/2,height: width/2,backgroundColor:'white',opacity:0.1}}></View>
+       <View style={styles.qrArea1}>
+           <View style={styles.qrArea2}>
+             <View style={{flex:1,borderTopWidth:4,borderLeftWidth:4,borderColor:'#fff',borderRadius:3}}></View>
+             <View style={{flex:1}}></View>
+             <View style={{flex:1,borderTopWidth:4,borderRightWidth:4,borderColor:'#fff',borderRadius:3}}></View>
+           </View>
+           <View style={{flex:1}}></View>
+           <View style={styles.qrArea2}>
+            <View style={{flex:1,borderBottomWidth:4,borderLeftWidth:4,borderColor:'#fff',borderRadius:3}}></View>
+             <View style={{flex:1}}></View>
+             <View style={{flex:1,borderBottomWidth:4,borderRightWidth:4,borderColor:'#fff',borderRadius:3}}></View>
+           </View>
+        </View>
     </View>
   );
 }
 
+const{width}=Dimensions.get('screen');
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  qrArea: {
+    backgroundColor:'black',
+    opacity:0.05,
+
+  },
+  qrArea1:{
+    width: width/2,
+    height: width/2,
+    position:'absolute'
+  },
+  qrArea2:{
+    flex:1,
+    flexDirection:'row'
   },
 });
